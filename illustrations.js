@@ -1,0 +1,48 @@
+/* Original vector movement diagrams. Coordinates are schematic, not anatomical measurements. */
+const exerciseGuides = {
+'Chair squats': {view:'Side view',steps:['Stand just in front of a sturdy chair, feet about hip-width apart.','Send hips back, bend knees, and lower toward the seat. Press through your feet to stand.'],cue:'Keep your knees tracking in the direction of your toes.',poses:['standChair','squat']},
+'Resistance-band rows': {view:'Side view · near arm shown',steps:['Secure a band at lower-chest height. Stand tall facing the anchor, arms reaching forward.','Draw elbows back and hands toward your ribs. Slowly reach forward again.'],cue:'Check the anchor before starting. Keep your shoulders down and your torso still.',poses:['rowStart','rowEnd']},
+'Dumbbell floor press': {view:'Side view · near arm shown',steps:['Lie on your back with knees bent and feet flat. Bend elbows with upper arms resting on the floor.','Press the dumbbells above your chest, then lower until upper arms gently meet the floor.'],cue:'Keep wrists over elbows. Use countertop push-ups instead if getting to the floor is difficult.',poses:['pressStart','pressEnd']},
+'Biceps curls': {view:'Side view · near arm shown',steps:['Stand tall with a dumbbell at your side, palm facing forward.','Keep the elbow close to your ribs and bend it to lift the weight. Lower slowly.'],cue:'Use your 8-pound weights only if comfortable. Avoid swinging or leaning back.',poses:['curlStart','curlEnd']},
+'Calf raises': {view:'Side view',steps:['Stand with feet flat and hold a stable counter for support.','Lift both heels to rise onto your toes. Lower your heels slowly.'],cue:'Keep support in reach throughout. Move straight upward without rolling your ankles.',poses:['calfStart','calfEnd']},
+'Supported balance': {view:'Front view · foot placement inset',steps:['Stand beside a stable counter and keep a hand close to it.','Place one foot directly in front of the other, heel near toes. Hold 20–30 seconds, then switch the front foot.'],cue:'Use the counter whenever needed. Keep your eyes open. One logged set includes two holds.',poses:['balanceStart','balanceHold']},
+'Dumbbell hip hinges': {view:'Side view · near arm shown',steps:['Stand with feet hip-width apart, soft knees, and dumbbells in front of your thighs.','Push your hips back, letting weights travel close to your legs. Stand tall again.'],cue:'Keep your back neutral. Stop the hinge before your back starts to round.',poses:['hingeStart','hingeEnd']},
+'Low step-ups': {view:'Side view',steps:['Hold a stable rail beside a low step. Place one whole foot onto the step.','Press through that foot to step up. Step down slowly and repeat; switch the leading leg.'],cue:'Start without weights. Use a secure step, not a chair, and keep support available.',poses:['stepStart','stepEnd']},
+'Band pull-aparts': {view:'Front view',steps:['Hold a light band in front of your chest, arms reaching forward with soft elbows.','Open your arms outward to gently stretch the band. Return slowly.'],cue:'Keep shoulders relaxed and ribs steady. Use a comfortable range without forcing the band.',poses:['apartStart','apartEnd']},
+'Lateral raises': {view:'Front view',steps:['Stand tall with light dumbbells beside your thighs and elbows slightly bent.','Lift your arms out to the sides, stopping at or below shoulder height. Lower slowly.'],cue:'Keep shoulders down. Use a lighter weight if you need to shrug or swing.',poses:['raiseStart','raiseEnd']},
+'Band Pallof press': {view:'Top view · anchor is to your side',steps:['Stand sideways to a secure chest-height band anchor. Hold the band with both hands at your chest.','Press your hands straight forward while keeping hips and shoulders facing ahead. Return to chest; repeat on the other side.'],cue:'Resist the sideways pull without turning. Test the anchor first and use light tension.',poses:['pallofStart','pallofEnd']}
+};
+function movementSVG(name,pose){
+ const ink='#315746', skin='#e0aa83', band='#af713d';
+ const line=(pts,c=ink,w=10)=>`<polyline points="${pts}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`;
+ const head=(x,y)=>`<circle cx="${x}" cy="${y}" r="12" fill="${skin}"/><path d="M${x-10} ${y-5} Q${x} ${y-19} ${x+10} ${y-5}" fill="${ink}"/>`;
+ const body=(h,t,legs,arms)=>head(...h)+line(t,ink,17)+line(legs,ink,9)+line(arms,skin,8);
+ const weight=(x,y)=>`<g stroke="#34483e" stroke-width="4"><path d="M${x-9} ${y}h18"/><path d="M${x-9} ${y-6}v12M${x+9} ${y-6}v12" stroke-width="6"/></g>`;
+ const chair=`<path d="M42 98v62M42 124h39v36" fill="none" stroke="#9ba69a" stroke-width="5"/>`;
+ const counter=`<path d="M132 92h43M141 93v67M170 93v67" fill="none" stroke="#9ba69a" stroke-width="5"/>`;
+ const anchor=`<path d="M22 55v65" stroke="#9ba69a" stroke-width="6"/><circle cx="22" cy="88" r="5" fill="${band}"/>`;
+ let art='';
+ switch(pose){
+ case 'standChair':art=chair+body([98,39],'98,60 98,106','98,106 94,133 96,158 112,158','98,68 109,92 110,113');break;
+ case 'squat':art=chair+body([91,63],'88,83 65,119','65,119 106,122 97,158 113,158','87,87 112,96 133,88');break;
+ case 'rowStart':art=anchor+line('22,88 65,87',band,3)+body([119,39],'119,60 119,107','119,107 107,158 93,158 107,158 133,158 148,158','119,70 91,79 65,87');break;
+ case 'rowEnd':art=anchor+line('22,88 112,89',band,3)+body([119,39],'119,60 119,107','119,107 107,158 93,158 107,158 133,158 148,158','119,70 143,90 112,89');break;
+ case 'pressStart':art=head(31,143)+line('48,145 102,145',ink,17)+line('102,145 130,113 155,154 170,154',ink,9)+line('64,142 85,143 85,111',skin,8)+weight(85,108);break;
+ case 'pressEnd':art=head(31,143)+line('48,145 102,145',ink,17)+line('102,145 130,113 155,154 170,154',ink,9)+line('64,142 65,112 65,80',skin,8)+weight(65,77);break;
+ case 'curlStart':case 'hingeStart':art=body([93,39],'93,60 93,107','93,107 80,158 65,158 80,158 109,158 123,158','93,70 102,94 103,117')+weight(103,120);break;
+ case 'curlEnd':art=body([93,39],'93,60 93,107','93,107 80,158 65,158 80,158 109,158 123,158','93,70 102,94 119,70')+weight(119,67);break;
+ case 'calfStart':art=counter+body([95,39],'95,60 95,106','95,106 95,132 95,158 112,158','95,68 116,90 141,90');break;
+ case 'calfEnd':art=counter+body([95,30],'95,51 95,97','95,97 95,123 95,148 112,158','95,59 116,90 141,90')+line('76,153 76,137','#af713d',2)+line('71,143 76,137 81,143','#af713d',2);break;
+ case 'balanceStart':case 'balanceHold':art=counter+body([89,38],'89,59 89,106',pose==='balanceStart'?'89,106 76,156 65,156 76,156 102,156 113,156':'89,106 89,140 94,156 105,156 94,156 86,148 77,148','89,69 116,90 141,90')+`<rect x="15" y="100" width="39" height="62" rx="7" fill="#e2e8d7"/><ellipse cx="${pose==='balanceStart'?26:34}" cy="${pose==='balanceStart'?132:144}" rx="5" ry="12" fill="${ink}"/><ellipse cx="${pose==='balanceStart'?43:34}" cy="${pose==='balanceStart'?132:118}" rx="5" ry="12" fill="${ink}"/>`;break;
+ case 'hingeEnd':art=body([135,75],'119,88 82,111','82,111 94,135 84,158 100,158','115,92 115,115 113,138')+weight(113,141);break;
+ case 'stepStart':art=`<path d="M99 160v-24h72v24" fill="#d2ddc7" stroke="#9ba69a" stroke-width="3"/><path d="M139 78h33M150 78v58" stroke="#9ba69a" stroke-width="5"/>`+body([77,39],'77,60 77,106','77,106 73,158 58,158 73,158 77,106 110,111 118,134 134,134','77,68 111,79 146,78');break;
+ case 'stepEnd':art=`<path d="M99 160v-24h72v24" fill="#d2ddc7" stroke="#9ba69a" stroke-width="3"/><path d="M139 78h33M150 78v58" stroke="#9ba69a" stroke-width="5"/>`+body([121,18],'121,39 121,82','121,82 120,134 135,134 120,134 121,82 105,110 92,126','121,46 133,65 148,78');break;
+ case 'apartStart':art=body([100,35],'100,56 100,108','100,108 84,158 72,158 84,158 116,158 128,158','100,66 82,77 88,67 112,67 118,77 100,66')+line('88,67 112,67',band,4);break;
+ case 'apartEnd':art=body([100,35],'100,56 100,108','100,108 84,158 72,158 84,158 116,158 128,158','24,68 62,68 100,66 138,68 176,68')+line('24,72 176,72',band,3);break;
+ case 'raiseStart':art=body([100,35],'100,56 100,108','100,108 84,158 72,158 84,158 116,158 128,158','74,114 79,91 100,66 121,91 126,114')+weight(74,118)+weight(126,118);break;
+ case 'raiseEnd':art=body([100,35],'100,56 100,108','100,108 84,158 72,158 84,158 116,158 128,158','24,75 62,70 100,66 138,70 176,75')+weight(24,79)+weight(176,79);break;
+ case 'pallofStart':case 'pallofEnd':{const end=pose==='pallofEnd',y=end?47:91;art=`<path d="M14 86v36" stroke="#9ba69a" stroke-width="6"/><circle cx="14" cy="104" r="5" fill="${band}"/>`+line(`14,104 100,${y}`,band,3)+`<ellipse cx="100" cy="113" rx="31" ry="16" fill="${ink}"/>`+line(`72,108 79,${end?74:90} 100,${y} 121,${end?74:90} 128,108`,skin,8)+head(100,109)+`<path d="M100 90v-6" stroke="${ink}" stroke-width="3"/><path d="M100 20v12m-4-4 4 4 4-4" fill="none" stroke="#af713d" stroke-width="2"/><text x="100" y="14" text-anchor="middle" fill="#65736b" font-size="9">FACE FORWARD</text><text x="18" y="143" fill="#65736b" font-size="9">ANCHOR</text>`;break;}
+ }
+ return `<svg viewBox="0 0 200 180" role="img" aria-label="${esc(name)}: ${esc(pose)}"><path d="M12 164h176" stroke="#d1dacb" stroke-width="2"/>${art}</svg>`;
+}
+function exerciseIllustration(name){const g=exerciseGuides[name];return `<div class="movement-guide"><div class="movement-heading"><span class="label">HOW TO DO IT</span><span>${g.view}</span></div><div class="movement-panels">${g.poses.map((pose,i)=>`<figure>${movementSVG(name,pose)}<figcaption><b>${i+1}</b><span>${esc(g.steps[i])}</span></figcaption></figure>`).join('')}</div><p class="form-cue"><strong>Form cue:</strong> ${esc(g.cue)}</p></div>`}
