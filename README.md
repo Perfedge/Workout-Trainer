@@ -16,6 +16,12 @@ Weeks 1–2 use one set per exercise; weeks 3–10 use two; weeks 11–12 offer 
 
 Weekly reviews track average weight, recovery, discomfort, and notes. The progress view compares all 12 weeks. Sunday’s optional walk is tracked separately from the eight planned activities.
 
+## Peloton-day strength and weekly totals
+
+Monday, Wednesday, and Friday have a separate Strength button for front and lateral dumbbell raise logs. Add or remove sets, enter reps per arm and the weight of one dumbbell in pounds, then check completed sets. Enter actual raise-session minutes for calorie estimates. These logs do not change the eight core activities.
+
+The top of each weekly review summarizes completed rides and minutes, walking sessions and miles (including completed Sunday walks), Strength A/B sessions, checked raise sets, reps and weight ranges, and complete slant-board routines. Calorie estimates use the current week’s entered body weight and documented, adjustable duration/effort assumptions from the 2024 Adult Compendium of Physical Activities. Estimates represent total energy during the logged exercise, including resting energy. Missing raise durations yield a partial estimate; missing weight leaves calories blank. Partial Strength A/B and slant-board sessions are excluded from calories. JSON backups retain all logs and settings; CSV includes weekly totals.
+
 ## Animated exercise demonstrations
 
 Every Strength A and B exercise and slant-board movement includes a looping SVG demonstration alongside the static graphics. Controls support play/pause, replay, and slow speed. Demonstrations pause outside the visible workout area and start paused when reduced motion is enabled. Balance and stretches show a steady hold rather than repeated movement; use the workout timer for prescribed hold durations. The demos are schematic visual aids, not a measurement of your repetitions or a prescribed movement tempo.
@@ -32,7 +38,7 @@ Storage is specific to the site address. To move logs from the previous ChatGPT 
 
 ## GitHub Pages
 
-Publish this repository from `main` and `/ (root)` under Settings > Pages using Deploy from a branch. No build step is needed. Keep `.nojekyll` and the six app files in the repository root. Relative asset links support a project subpath.
+Publish this repository from `main` and `/ (root)` under Settings > Pages using Deploy from a branch. No build step is needed. Keep `.nojekyll` and the seven app files in the repository root. Relative asset links support a project subpath.
 
 ## Development
 
