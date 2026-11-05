@@ -16,6 +16,10 @@ Weeks 1–2 use one set per exercise; weeks 3–10 use two; weeks 11–12 offer 
 
 Weekly reviews track average weight, recovery, discomfort, and notes. The progress view compares all 12 weeks. Sunday’s optional walk is tracked separately from the eight planned activities.
 
+## Animated exercise demonstrations
+
+Every Strength A and B exercise and slant-board movement includes a looping SVG demonstration alongside the static graphics. Controls support play/pause, replay, and slow speed. Demonstrations pause outside the visible workout area and start paused when reduced motion is enabled. Balance and stretches show a steady hold rather than repeated movement; use the workout timer for prescribed hold durations. The demos are schematic visual aids, not a measurement of your repetitions or a prescribed movement tempo.
+
 ## Slant-board supplement
 
 After Tuesday and Thursday strength, use the 5–7 minute illustrated slant-board routine. Log two 30-second straight-knee holds, two 30-second bent-knee holds, and 10 ankle mobility rocks. In weeks 1–2, use only these three exercises. From week 3, shallow supported squats are optional (one set of eight); in weeks 7–12, gradually work toward 10–12 repetitions if comfortable. Skip squats for pain or instability. Use stable support, nonslip footwear, and no weights. The weekly view includes separate Tuesday and Thursday checklists and a reset that affects only the selected week’s slant-board logs. Progress and exports include supplement completion without changing the main activity count.
@@ -28,7 +32,7 @@ Storage is specific to the site address. To move logs from the previous ChatGPT 
 
 ## GitHub Pages
 
-Publish this repository from `main` and `/ (root)` under Settings > Pages using Deploy from a branch. No build step is needed. Keep `.nojekyll` and the five app files in the repository root. Relative asset links support a project subpath.
+Publish this repository from `main` and `/ (root)` under Settings > Pages using Deploy from a branch. No build step is needed. Keep `.nojekyll` and the six app files in the repository root. Relative asset links support a project subpath.
 
 ## Development
 

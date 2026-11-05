@@ -45,4 +45,4 @@ function movementSVG(name,pose){
  }
  return `<svg viewBox="0 0 200 180" role="img" aria-label="${esc(name)}: ${esc(pose)}"><path d="M12 164h176" stroke="#d1dacb" stroke-width="2"/>${art}</svg>`;
 }
-function exerciseIllustration(name){const g=exerciseGuides[name];return `<div class="movement-guide"><div class="movement-heading"><span class="label">HOW TO DO IT</span><span>${g.view}</span></div><div class="movement-panels">${g.poses.map((pose,i)=>`<figure>${movementSVG(name,pose)}<figcaption><b>${i+1}</b><span>${esc(g.steps[i])}</span></figcaption></figure>`).join('')}</div><p class="form-cue"><strong>Form cue:</strong> ${esc(g.cue)}</p></div>`}
+function exerciseIllustration(name){const g=exerciseGuides[name];return `${exerciseAnimation(name)}<div class="movement-guide"><div class="movement-heading"><span class="label">HOW TO DO IT</span><span>${g.view}</span></div><div class="movement-panels">${g.poses.map((pose,i)=>`<figure>${movementSVG(name,pose)}<figcaption><b>${i+1}</b><span>${esc(g.steps[i])}</span></figcaption></figure>`).join('')}</div><p class="form-cue"><strong>Form cue:</strong> ${esc(g.cue)}</p></div>`}
