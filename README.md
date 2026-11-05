@@ -18,9 +18,9 @@ Weekly reviews track average weight, recovery, discomfort, and notes. The progre
 
 ## Peloton-day strength and weekly totals
 
-Monday, Wednesday, and Friday have a separate Strength button for front and lateral dumbbell raise logs. Add or remove sets, enter reps per arm and the weight of one dumbbell in pounds, then check completed sets. Enter actual raise-session minutes for calorie estimates. These logs do not change the eight core activities.
+Monday, Wednesday, and Friday have a separate Strength button for front biceps and side hammer dumbbell curl logs. Add or remove sets, enter reps per arm and the weight of one dumbbell in pounds, then check completed sets. Enter actual curl-session minutes for calorie estimates. These logs do not change the eight core activities.
 
-The top of each weekly review summarizes completed rides and minutes, walking sessions and miles (including completed Sunday walks), Strength A/B sessions, checked raise sets, reps and weight ranges, and complete slant-board routines. Calorie estimates use the current week’s entered body weight and documented, adjustable duration/effort assumptions from the 2024 Adult Compendium of Physical Activities. Estimates represent total energy during the logged exercise, including resting energy. Missing raise durations yield a partial estimate; missing weight leaves calories blank. Partial Strength A/B and slant-board sessions are excluded from calories. JSON backups retain all logs and settings; CSV includes weekly totals.
+The top of each weekly review summarizes completed rides and minutes, walking sessions and miles (including completed Sunday walks), Strength A/B sessions, checked curl sets, reps and weight ranges, and complete slant-board routines. Calorie estimates use the current week’s entered body weight and documented, adjustable duration/effort assumptions from the 2024 Adult Compendium of Physical Activities. Estimates represent total energy during the logged exercise, including resting energy. Missing curl durations yield a partial estimate; missing weight leaves calories blank. Partial Strength A/B and slant-board sessions are excluded from calories. JSON backups retain all logs and settings; CSV includes weekly totals.
 
 ## Animated exercise demonstrations
 

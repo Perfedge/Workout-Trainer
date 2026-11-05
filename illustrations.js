@@ -1,6 +1,6 @@
 /* Original vector movement diagrams. Coordinates are schematic, not anatomical measurements. */
 const exerciseGuides = {
-'Front raises': {view:'Side view · near arm shown',steps:['Stand tall with light dumbbells in front of your thighs and elbows softly bent.','Raise your arms forward, stopping at or below shoulder height, then lower with control.'],cue:'Keep shoulders relaxed and avoid swinging or leaning back.',poses:['frontRaiseStart','frontRaiseEnd']},
+'Hammer curls': {view:'Side view · near arm shown',steps:['Stand tall with a dumbbell beside each thigh, palms facing inward toward one another.','Keep your elbows close to your sides and bend them to lift the weights. Maintain the neutral grip, then lower slowly.'],cue:'Keep wrists straight and avoid swinging. Upper arms stay beside your torso.',poses:['hammerStart','hammerEnd']},
 'Chair squats': {view:'Side view',steps:['Stand just in front of a sturdy chair, feet about hip-width apart.','Send hips back, bend knees, and lower toward the seat. Press through your feet to stand.'],cue:'Keep your knees tracking in the direction of your toes.',poses:['standChair','squat']},
 'Resistance-band rows': {view:'Side view · near arm shown',steps:['Secure a band at lower-chest height. Stand tall facing the anchor, arms reaching forward.','Draw elbows back and hands toward your ribs. Slowly reach forward again.'],cue:'Check the anchor before starting. Keep your shoulders down and your torso still.',poses:['rowStart','rowEnd']},
 'Dumbbell floor press': {view:'Side view · near arm shown',steps:['Lie on your back with knees bent and feet flat. Bend elbows with upper arms resting on the floor.','Press the dumbbells above your chest, then lower until upper arms gently meet the floor.'],cue:'Keep wrists over elbows. Use countertop push-ups instead if getting to the floor is difficult.',poses:['pressStart','pressEnd']},
@@ -19,6 +19,7 @@ function movementSVG(name,pose){
  const head=(x,y)=>`<circle cx="${x}" cy="${y}" r="12" fill="${skin}"/><path d="M${x-10} ${y-5} Q${x} ${y-19} ${x+10} ${y-5}" fill="${ink}"/>`;
  const body=(h,t,legs,arms)=>head(...h)+line(t,ink,17)+line(legs,ink,9)+line(arms,skin,8);
  const weight=(x,y)=>`<g stroke="#34483e" stroke-width="4"><path d="M${x-9} ${y}h18"/><path d="M${x-9} ${y-6}v12M${x+9} ${y-6}v12" stroke-width="6"/></g>`;
+ const verticalWeight=(x,y)=>`<g stroke="#34483e" stroke-width="4"><path d="M${x} ${y-9}v18"/><path d="M${x-6} ${y-9}h12M${x-6} ${y+9}h12" stroke-width="6"/></g>`;
  const chair=`<path d="M42 98v62M42 124h39v36" fill="none" stroke="#9ba69a" stroke-width="5"/>`;
  const counter=`<path d="M132 92h43M141 93v67M170 93v67" fill="none" stroke="#9ba69a" stroke-width="5"/>`;
  const anchor=`<path d="M22 55v65" stroke="#9ba69a" stroke-width="6"/><circle cx="22" cy="88" r="5" fill="${band}"/>`;
@@ -30,8 +31,9 @@ function movementSVG(name,pose){
  case 'rowEnd':art=anchor+line('22,88 112,89',band,3)+body([119,39],'119,60 119,107','119,107 107,158 93,158 107,158 133,158 148,158','119,70 143,90 112,89');break;
  case 'pressStart':art=head(31,143)+line('48,145 102,145',ink,17)+line('102,145 130,113 155,154 170,154',ink,9)+line('64,142 85,143 85,111',skin,8)+weight(85,108);break;
  case 'pressEnd':art=head(31,143)+line('48,145 102,145',ink,17)+line('102,145 130,113 155,154 170,154',ink,9)+line('64,142 65,112 65,80',skin,8)+weight(65,77);break;
- case 'frontRaiseStart':case 'curlStart':case 'hingeStart':art=body([93,39],'93,60 93,107','93,107 80,158 65,158 80,158 109,158 123,158','93,70 102,94 103,117')+weight(103,120);break;
- case 'frontRaiseEnd':art=body([93,39],'93,60 93,107','93,107 80,158 65,158 80,158 109,158 123,158','93,70 122,74 151,74')+weight(151,77);break;
+ case 'curlStart':case 'hingeStart':art=body([93,39],'93,60 93,107','93,107 80,158 65,158 80,158 109,158 123,158','93,70 102,94 103,117')+weight(103,120);break;
+ case 'hammerStart':art=body([93,39],'93,60 93,107','93,107 80,158 65,158 80,158 109,158 123,158','93,70 102,94 103,117')+verticalWeight(103,120);break;
+ case 'hammerEnd':art=body([93,39],'93,60 93,107','93,107 80,158 65,158 80,158 109,158 123,158','93,70 102,94 119,70')+verticalWeight(119,67);break;
  case 'curlEnd':art=body([93,39],'93,60 93,107','93,107 80,158 65,158 80,158 109,158 123,158','93,70 102,94 119,70')+weight(119,67);break;
  case 'calfStart':art=counter+body([95,39],'95,60 95,106','95,106 95,132 95,158 112,158','95,68 116,90 141,90');break;
  case 'calfEnd':art=counter+body([95,30],'95,51 95,97','95,97 95,123 95,148 112,158','95,59 116,90 141,90')+line('76,153 76,137','#af713d',2)+line('71,143 76,137 81,143','#af713d',2);break;
